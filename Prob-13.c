@@ -9,10 +9,6 @@ int main() {
     scanf("%lf %lf", &a, &b);
     printf("Enter tolerance: ");
     scanf("%lf", &tolerance);
-    if (f(a) * f(b) > 0) {
-        printf("Initial guesses do not bracket the root.\n");
-        return 1;
-    }
     double c = a;
     while ((b - a) >= tolerance) {
         c = (a + b) / 2;

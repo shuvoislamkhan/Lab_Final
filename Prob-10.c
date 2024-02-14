@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
-bool isPrime(int num) {
+int isPrime(int num) {
     if (num <= 1)
-        return false;
+        return 0;
     for (int i = 2; i * i <= num; i++) {
         if (num % i == 0)
-            return false;
+            return 0;
     }
-    return true;
+    return 1;
 }
 int main() {
     int n, count = 0, num = 2;
@@ -15,7 +15,7 @@ int main() {
     scanf("%d", &n);
     printf("First %d prime numbers: ", n);
     while (count < n) {
-        if (isPrime(num)) {
+        if (isPrime(num)==1) {
             printf("%d, ", num);
             count++;
         }
