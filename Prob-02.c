@@ -5,34 +5,25 @@ int main() {
     int n;
     double sum = 0.0, product = 1.0, sum_inverse = 0.0;
 
-    // Input the number of elements
     printf("Enter the number of elements: ");
     scanf("%d", &n);
 
-    // Input the numbers
     printf("Enter numbers:\n");
-    for (int i = 0; i < n; ++i) {
+    for (int i = 1; i <= n; i++) {
         double num;
         scanf("%lf", &num);
-
-        // Arithmetic Mean
-        sum += num;  
-
-        // Geometric Mean
+        sum += num;
         product *= num;
+        sum_inverse += 1.0 / num;    
+    }
 
-        // Harmonic Mean
-        sum_inverse += 1.0 / num;    }
+    double am = sum / n;
+    double gm = pow(product, 1.0 / n);
+    double hm = n / sum_inverse;
 
-    // Calculate means
-    double arithmetic_mean = sum / n;
-    double geometric_mean = pow(product, 1.0 / n);
-    double harmonic_mean = n / sum_inverse;
-
-    // Output the results
-    printf("Arithmetic Mean: %lf\n", arithmetic_mean);
-    printf("Geometric Mean: %lf\n", geometric_mean);
-    printf("Harmonic Mean: %lf\n", harmonic_mean);
+    printf("Arithmetic Mean= %lf\n", am);
+    printf("Geometric Mean= %lf\n", gm);
+    printf("Harmonic Mean= %lf\n", hm);
 
     return 0;
 }
