@@ -37,7 +37,6 @@ int main() {
     printf("Enter elements for matrix A:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            printf("Enter element A[%d][%d]: ", i, j);
             scanf("%d", &A[i][j]);
         }
     }
