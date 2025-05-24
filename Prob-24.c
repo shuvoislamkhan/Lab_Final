@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 // Function to integrate
 double f(double x) {
