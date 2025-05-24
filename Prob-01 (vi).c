@@ -6,7 +6,12 @@ int sumUsingRecursion(int n) {
     else
         return n + sumUsingRecursion(n - 1);
 }
-    sum = sumUsingRecursion(n);
+int main() {
+    int n;
+    // Input n from the user
+    printf("Enter a positive integer n: ");
+    scanf("%d", &n);
+    int sum = sumUsingRecursion(n);
 
     printf("Sum using recursion: %d\n", sum);
 

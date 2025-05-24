@@ -1,56 +1,46 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-void multiplyMatrices(int rowA, int colA, int A[rowA][colA], int rowB, int colB, int B[rowB][colB], int result[rowA][colB]) {
-    for (int i = 0; i < rowA; i++) {
-        for (int j = 0; j < colB; j++) {
-            result[i][j] = 0;
-            for (int k = 0; k < colA; k++) {
-                result[i][j] += A[i][k] * B[k][j];
-            }
-        }
-    }
-}
 
 int main() {
-    int rowA, colA, rowB, colB;
+    int r1, c1, r2, c2;
 
-    printf("Enter dimensions of matrix A (rows and columns): ");
-    scanf("%d %d", &rowA, &colA);
+    // Taking matrix dimensions from user
+    printf("Enter rows and columns for first matrix: ");
+    scanf("%d %d", &r1, &c1);
+    printf("Enter rows and columns for second matrix: ");
+    scanf("%d %d", &r2, &c2);
 
-    int A[rowA][colA];
+    // Check if multiplication is possible
+    if (c1 != r2) {
+        printf("Matrix multiplication not possible!\n");
+        return 0;
+    }
 
-    printf("Enter elements for matrix A:\n");
-    for (int i = 0; i < rowA; i++) {
-        for (int j = 0; j < colA; j++) {
+    int A[100][100], B[100][100], result[100][100]; // Use max fixed size
+
+    // Input for first matrix
+    printf("Enter elements of first matrix:\n");
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c1; j++) {
             scanf("%d", &A[i][j]);
         }
     }
 
-    printf("Enter dimensions of matrix B (rows and columns): ");
-    scanf("%d %d", &rowB, &colB);
-
-    int B[rowB][colB];
-
-    printf("Enter elements for matrix B:\n");
-    for (int i = 0; i < rowB; i++) {
-        for (int j = 0; j < colB; j++) {
+    // Input for second matrix
+    printf("Enter elements of second matrix:\n");
+    for (int i = 0; i < r2; i++) {
+        for (int j = 0; j < c2; j++) {
             scanf("%d", &B[i][j]);
         }
     }
 
-    if (colA != rowB) {
-        printf("Matrix multiplication is not possible.\n");
-        return 1;
-    }
-
-    int result[rowA][colB];
-
-    multiplyMatrices(rowA, colA, A, rowB, colB, B, result);
-
-    printf("Result of matrix multiplication (A * B):\n");
-    for (int i = 0; i < rowA; i++) {
-        for (int j = 0; j < colB; j++) {
+    // Matrix multiplication
+    printf("Resultant Matrix:\n");
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < c1; k++) {
+                result[i][j] += A[i][k] * B[k][j];
+            }
             printf("%d ", result[i][j]);
         }
         printf("\n");

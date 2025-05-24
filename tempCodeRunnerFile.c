@@ -1,1 +1,1 @@
-    printf("Enter the value of n: ");
+#include <stdbool.h>

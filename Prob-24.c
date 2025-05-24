@@ -15,24 +15,25 @@ int main() {
     scanf("%lf", &b);
     printf("Enter the number of intervals (must be even): ");
     scanf("%d", &n);
+
     if (n % 2 != 0) {
         printf("Number of intervals must be even for Simpson's 1/3 Rule.\n");
         return 1;
     }
     double h = (b - a) / n;
-    double integral = f(a) + f(b);
+    double sum = f(a) + f(b);
 
-    for (int i = 1; i < n; i += 2) {
-        integral += 4 * f(a + i * h);
+    for (int i = 1; i < n; i++) {
+        double x = a + i * h;
+        if (i % 2 == 0)
+            sum += 2 * f(x);
+        else
+            sum += 4 * f(x);
     }
 
-    for (int i = 2; i < n - 1; i += 2) {
-        integral += 2 * f(a + i * h);
-    }
+    double result = (h / 3.0) * sum;
 
-    integral *= h / 3;
-
-    printf("The numerical integration result using Simpson's 1/3 Rule: %lf\n", integral);
+    printf("The numerical integration result using Simpson's 1/3 Rule: %lf\n", result);
 
     return 0;
 }
